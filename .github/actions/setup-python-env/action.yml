@@ -27,7 +27,7 @@ runs:
 
     - name: Install Python dependencies pre-project creation step
       if: ${{ hashFiles('pyproject.toml') == '' }}
-      run: uv pip install copier
+      run: uv pip install copier --system
       shell: bash
 
     - name: Install Python dependencies post-project creation step
