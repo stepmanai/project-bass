@@ -25,6 +25,12 @@ runs:
         enable-cache: 'true'
         cache-suffix: ${{ matrix.python-version }}
 
-    - name: Install Python dependencies
+    - name: Install Python dependencies pre-project creation step
+      if: ${{ hashFiles('pyproject.toml') == '' }}
+      run: uv pip install copier
+      shell: bash
+
+    - name: Install Python dependencies post-project creation step
+      if: ${{ hashFiles('pyproject.toml') != '' }}
       run: uv sync --frozen
       shell: bash
