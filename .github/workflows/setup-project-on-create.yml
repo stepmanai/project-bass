@@ -6,6 +6,8 @@ on:
 
 jobs:
   generate-project:
+    if: >-
+      ${{ !github.event.repository.is_template }}
     runs-on: ubuntu-latest
     steps:
 
@@ -24,3 +26,9 @@ jobs:
             --data project_name="${{ github.event.repository.name }}" \
             --data project_description="${{ github.event.description }}" \
           https://github.com/stepmanai/base-template.git .
+
+      - name: Commit to main branch
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Initializing ${{ github.event.repository.name }} project with Copier template."
+          create_branch: false
