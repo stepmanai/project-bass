@@ -4,7 +4,7 @@ on:
   create:
 
 jobs:
-  test:
+    name: Run Copier command to generate project files from base_template
     runs-on: ubuntu-latest
     steps:
       - name: Generate project from stepmanai/project_template
