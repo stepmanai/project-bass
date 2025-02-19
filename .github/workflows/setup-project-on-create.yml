@@ -10,9 +10,21 @@ jobs:
       - name: Check out
         uses: actions/checkout@v4
 
+      - name: Setup SSH Keys and known_hosts
+        env:
+            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+            mkdir -p ~/.ssh
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+            ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
 
       - name: Generate project from stepmanai/project_template
         run: |
-          copier copy --vcs-ref main --data project_name="${{ github.event.repository.name }}" --data project_description="${{ github.event.description }}" git@github.com:stepmanai/base_template.git .
+          copier copy --vcs-ref main \
+            --data project_name="${{ github.event.repository.name }}" \
+            --data project_description="${{ github.event.description }}" \
+          git@github.com:stepmanai/base_template.git .
