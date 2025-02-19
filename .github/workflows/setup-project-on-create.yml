@@ -1,0 +1,12 @@
+name: Setup new project on Stepman.AI 
+
+on:
+  create:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate project from stepmanai/project_template
+        run: |
+          copier copy --vcs-ref main --data project_name=${{ github.event.repository.name }}" --data project_description=${{ github.event.release.body }} https://github.com/stepmanai/base_template.git .
