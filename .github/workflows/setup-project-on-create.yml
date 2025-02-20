@@ -27,14 +27,6 @@ jobs:
             --data project_description="${{ github.event.description }}" \
           https://github.com/stepmanai/base-template.git .
 
-      - name: Commit to main branch
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Initializing ${{ github.event.repository.name }} project with Copier template."
-          create_branch: false
-          commit_user_name: ${{ github.actor }}
-          commit_user_email: ${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com
-
       - name: Create uv.lock file
         run: |
           make install
@@ -46,7 +38,7 @@ jobs:
       - name: Commit to main branch with formatted changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Fix formatting issues in ${{ github.event.repository.name }} project."
+          commit_message: "Initializing ${{ github.event.repository.name }} project with Copier template."
           create_branch: false
           commit_user_name: ${{ github.actor }}
           commit_user_email: ${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com
