@@ -20,8 +20,11 @@ jobs:
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
 
-      - name: Echo github obj
-        run: echo ${{ toJson(github) }}
+      - name: Check object
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
 
       - name: Generate project from gh:stepmanai/project_template
         run: |
