@@ -20,6 +20,10 @@ jobs:
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
 
+      - name: Print statement for github.event.repository
+        run: |
+          echo "${{ github.event.repository }}"
+
       - name: Generate project from gh:stepmanai/project_template
         run: |
           copier copy --vcs-ref main \
