@@ -1,7 +1,6 @@
 name: Setup new project on Stepman.AI
 
 on:
-  create:
   workflow_dispatch:
 
 jobs:
