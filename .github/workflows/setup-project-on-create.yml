@@ -36,11 +36,6 @@ jobs:
           commit_user_name: ${{ github.actor }}
           commit_user_email: ${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com
 
-      - name: Check out updated repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GH_ACTION_KEY }}
-
       - name: Create uv.lock file
         run: |
           make install
