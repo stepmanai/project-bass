@@ -12,6 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check object (for debugging only)
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
+
       - name: Export tag
         id: vars
         run: echo tag=${GITHUB_REF#refs/*/} >> $GITHUB_OUTPUT
@@ -37,6 +43,12 @@ jobs:
       - name: Check out
         uses: actions/checkout@v4
 
+      - name: Check object (for debugging only)
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
+
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
 
@@ -60,6 +72,12 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v4
+
+      - name: Check object (for debugging only)
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
 
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env

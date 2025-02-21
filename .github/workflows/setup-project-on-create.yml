@@ -20,7 +20,7 @@ jobs:
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
 
-      - name: Check object
+      - name: Check object (for debugging only)
         run: |
           cat << OBJECT
           ${{ toJson(github) }}
