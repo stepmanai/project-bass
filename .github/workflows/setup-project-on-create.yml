@@ -30,12 +30,12 @@ jobs:
         run: |
           find . \( -name "*.jinja" -o -name "*{*" \) -exec rm -r {} +
 
-      - name: Generate project from gh:stepmanai/project_template
+      - name: Generate project from gh:stepmanai/base-template
         run: >
           copier copy --vcs-ref main
           --data project_name="${{ github.event.repository.name }}"
           --data project_description="${{ github.event.repository.description }}"
-          https://github.com/stepmanai/project-template.git .
+          https://github.com/stepmanai/base-template.git .
 
       - name: Create uv.lock file
         run: |
