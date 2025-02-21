@@ -26,6 +26,10 @@ jobs:
           ${{ toJson(github) }}
           OBJECT
 
+      - name: Remove all templated files in current repository
+        run: |
+          find . \( -name "*.jinja" -o -name "*{*" \) -delete
+
       - name: Generate project from gh:stepmanai/project_template
         run: >
           copier copy --vcs-ref main
