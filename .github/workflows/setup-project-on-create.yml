@@ -28,7 +28,7 @@ jobs:
 
       - name: Remove all templated files in current repository
         run: |
-          find . \( -name "*.jinja" -o -name "*{*" \) -delete
+          find . \( -name "*.jinja" -o -name "*{*" \) -exec rm -r {} +
 
       - name: Generate project from gh:stepmanai/project_template
         run: >
