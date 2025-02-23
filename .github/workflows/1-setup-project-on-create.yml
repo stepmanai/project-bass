@@ -49,14 +49,14 @@ jobs:
         run: |
           uv run pre-commit run -a
 
-      - name: Remove setup-project-on-create GitHub Action workflow
+      - name: Remove 1-setup-project-on-create GitHub Action workflow
         run: |
-          rm -rf ./.github/workflows/setup-project-on-create.yml
+          rm -rf ./.github/workflows/1-setup-project-on-create.yml
 
       - name: Commit to main branch with formatted changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Created ${{ github.event.repository.name }} project with setup-project-on-create GitHub Actions in stepmanai/base-template."
+          commit_message: "Created ${{ github.event.repository.name }} project with 1-setup-project-on-create GitHub Actions in stepmanai/base-template."
           create_branch: false
           commit_user_name: ${{ github.actor }}
           commit_user_email: ${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com
