@@ -1,4 +1,9 @@
-# {{ project_name }}
+<div align="center">
+    <picture>
+        <source srcset="assets/logo/dark-mode/{{ project_name.lower() }}.png"  media="(prefers-color-scheme: dark)">
+        <img src="assets/logo/no-dark-mode/{{ project_name.lower() }}.png" alt="Logo" width="200px" height=auto>
+    </picture>
+</div>
 
 [![Release](https://img.shields.io/github/v/release/stepmanai/{{ project_name }})](https://img.shields.io/github/v/release/stepmanai/{{ project_name }})
 [![Build status](https://img.shields.io/github/actions/workflow/status/stepmanai/{{ project_name }}/main.yml?branch=main)](https://github.com/stepmanai/{{ project_name }}/actions/workflows/main.yml?query=branch%3Amain)
@@ -11,50 +16,54 @@
 - **Github repository**: <https://github.com/stepmanai/{{ project_name }}/>
 - **Documentation** <https://stepmanai.github.io/{{ project_name }}/>
 
-## Getting started with your project
+## Prerequisites:
 
-### 1. Create a New Repository
+This project is compatible with `Ubuntu 22.04` (`ubuntu:jammy`) or later supported versions.
 
-First, create a repository on GitHub with the same name as this project, and then run the following commands:
+For older versions (`ubuntu:focal` or earlier), you must manually install `Python 3.9` or later.
+
+> **Note**: These instructions assume you have access to this repository. If you need to request access, please contact us.
+
+## Getting Started with Your Project
+
+### 1. Clone the Repository to Your Local Environment
+
+Begin by cloning the repository to a specific location on your local machine.
 
 ```bash
-git init -b main
-git add .
-git commit -m "init commit"
-git remote add origin git@github.com:stepmanai/{{ project_name }}.git
-git push -u origin main
+git clone https://github.com/stepmanai/{{ project_name }}.git
 ```
 
-### 2. Set Up Your Development Environment
+### 2. Install Required Local Dependencies
 
-Then, install the environment and the pre-commit hooks with
+Next, install the necessary dependencies by executing the following commands:
+
+> **Note**: You may skip some of these if they are already installed on your machine.
+
+```bash
+sudo apt install make python3-pip
+pip install uv
+```
+
+### 3. Set Up Your Development Environment
+
+Finally, set up your development environment and install pre-commit hooks with:
 
 ```bash
 make install
 ```
 
-This will also generate your `uv.lock` file
+### 4. Test pre-commit hooks
 
-### 3. Run the pre-commit hooks
-
-Initially, the CI/CD pipeline might be failing due to formatting issues. To resolve those run:
+Verify that the checks in the pre-commit hooks does not fail by running the following command:
 
 ```bash
 uv run pre-commit run -a
 ```
 
-### 4. Commit the changes
-
-Lastly, commit the changes made by the two steps above to your repository.
-
-```bash
-git add .
-git commit -m 'Fix formatting issues'
-git push origin main
-```
-
 You are now ready to start development on your project!
-The CI/CD pipeline will be triggered when you open a pull request, merge to main, or when you create a new release.
+
+Each time when code changes are made in the repository, run the pre-commit hooks to make sure that the build passes before opening a pull request, merging to main, or creating a new release. The project is designed so that the CI/CD pipeline will run these above code quality checks to enforce standardization.
 
 To finalize the set-up for publishing to PyPI, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/publishing/#set-up-for-pypi).
 For activating the automatic documentation with MkDocs, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/mkdocs/#enabling-the-documentation-on-github).
@@ -71,4 +80,4 @@ For more details, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/
 
 ---
 
-Repository initiated with [fpgmaas/cookiecutter-uv](https://github.com/fpgmaas/cookiecutter-uv).
+Repository initiated with [stepmanai/base-template](https://github.com/stepmanai/base-template) and pre-created by [fpgmaas/cookiecutter-uv](https://github.com/fpgmaas/cookiecutter-uv).
