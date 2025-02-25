@@ -5,9 +5,11 @@
     </picture>
 </div>
 
+<div align="center">
 [![Copier](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-grayscale-inverted-border-orange.json)](https://github.com/copier-org/copier)
 [![Commit activity](https://img.shields.io/github/commit-activity/m/stepmanai/project-bass)](https://img.shields.io/github/commit-activity/m/stepmanai/project-bass)
 [![License](https://img.shields.io/github/license/stepmanai/project-bass)](https://img.shields.io/github/license/stepmanai/project-bass)
+</div>
 
 A Copier template designed to streamline the creation process of new Stepman.AI projects.
 
