@@ -1,4 +1,4 @@
-name: � Setup new project on Stepman.AI
+name: 🎸 Setup new project on Stepman.AI
 
 on:
   workflow_dispatch:
