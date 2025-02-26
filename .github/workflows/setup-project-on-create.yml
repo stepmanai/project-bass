@@ -17,10 +17,6 @@ jobs:
         with:
           token: ${{ secrets.GH_ACTION_KEY }}
 
-      - name: Remove README.md from project-bass
-        run: |
-          rm -rf README.md
-
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
 
@@ -39,6 +35,8 @@ jobs:
           copier copy --vcs-ref main
           --data project_name="${{ github.event.repository.name }}"
           --data project_description="${{ github.event.repository.description }}"
+          --skip README.md
+          --skip debug_template.sh
           https://github.com/stepmanai/project-bass.git .
 
       - name: Create uv.lock file
