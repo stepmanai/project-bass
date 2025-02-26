@@ -17,6 +17,10 @@ jobs:
         with:
           token: ${{ secrets.GH_ACTION_KEY }}
 
+      - name: Remove project-bass specific files from new project repository
+        run: |
+          rm -rf README.md debug_template.sh
+
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
 
@@ -35,8 +39,6 @@ jobs:
           copier copy --vcs-ref main
           --data project_name="${{ github.event.repository.name }}"
           --data project_description="${{ github.event.repository.description }}"
-          --exclude README.md
-          --exclude debug_template.sh
           https://github.com/stepmanai/project-bass.git .
 
       - name: Create uv.lock file
