@@ -35,8 +35,8 @@ jobs:
           copier copy --vcs-ref main
           --data project_name="${{ github.event.repository.name }}"
           --data project_description="${{ github.event.repository.description }}"
-          --skip README.md
-          --skip debug_template.sh
+          --exclude README.md
+          --exclude debug_template.sh
           https://github.com/stepmanai/project-bass.git .
 
       - name: Create uv.lock file
