@@ -17,9 +17,9 @@ jobs:
         with:
           token: ${{ secrets.GH_ACTION_KEY }}
 
-      - name: Remove project-bass specific files from new project repository
+      - name: Remove project-bass specific files from new project repository pre-Copier template generation
         run: |
-          rm -rf README.md debug_template.sh
+          rm -rf README.md
 
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
@@ -49,9 +49,9 @@ jobs:
         run: |
           uv run pre-commit run -a
 
-      - name: Remove setup-project-on-create GitHub Action workflow
+      - name: Remove project-bass specific files from new project repository post-Copier template generation
         run: |
-          rm -rf ./.github/workflows/setup-project-on-create.yml
+          rm -rf debug_template.sh ./.github/workflows/setup-project-on-create.yml
 
       - name: Commit to main branch with formatted changes
         uses: stefanzweifel/git-auto-commit-action@v5
