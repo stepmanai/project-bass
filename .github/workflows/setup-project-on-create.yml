@@ -19,8 +19,7 @@ jobs:
 
       - name: Remove project-bass specific files from new project repository pre-Copier template generation
         run: |
-          rm -rf README.md;
-          find ./assets/logo -type f -wholename './assets/logo/*/project-bass.*' -exec rm {} +;
+          find . \( -type f -name 'project-bass.*' -or -type f -name 'README.md' \) -exec rm -v {} \;
 
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
