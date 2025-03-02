@@ -11,4 +11,4 @@ copier copy \
     ../ ./;
 
 make install;
-pre-commit run --files *;
+uv run pre-commit run --files *;
