@@ -51,7 +51,7 @@ jobs:
 
       - name: Remove project-bass specific files from new project repository post-Copier template generation
         run: |
-          find . \( -name 'project-bass.*' -or -name 'debug_template.sh' -or -name 'setup-project-on-create.yml' \) -exec rm -r {} +
+          find . \( -name 'project-bass*' -or -name 'debug_template.sh' -or -name 'setup-project-on-create.yml' \) -exec rm -r {} +
 
       - name: Commit to main branch with formatted changes
         uses: stefanzweifel/git-auto-commit-action@v5
