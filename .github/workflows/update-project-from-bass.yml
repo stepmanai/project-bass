@@ -12,17 +12,8 @@ jobs:
       actions: write
       contents: write
     steps:
-      - name: Check out template repository
+      - name: Check out
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GH_ACTION_KEY }}
-
-      - name: Remove project-bass specific files from new project repository pre-Copier template generation
-        run: |
-          find . -type f -name 'README.md' -exec rm -r {} +
-
-      - name: Set up the environment
-        uses: ./.github/actions/setup-python-env
 
       - name: Check object (for debugging only)
         run: |
@@ -30,9 +21,15 @@ jobs:
           ${{ toJson(github) }}
           OBJECT
 
-      - name: Remove all templated files in current repository
-        run: |
-          find . \( -name "*.jinja" -o -name "*{*" \) -exec rm -r {} +
+      - name: Set up the environment
+        uses: ./.github/actions/setup-python-env
+
+      # - name: Run checks
+      #   run: make check
+
+      # - name: Remove all templated files in current repository
+      #   run: |
+      #     find . \( -name "*.jinja" -o -name "*{*" \) -exec rm -r {} +
 
       - name: Generate project from gh:stepmanai/project-bass
         run: >

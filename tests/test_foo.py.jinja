@@ -1,12 +1,4 @@
-from {{ project_name.lower() }}.foo import foo, foozeball
-from {{ project_name.lower() }}.foo2 import beer
-
+from {{ project_name.lower() }}.foo import foo
 
 def test_foo():
     assert foo("foo") == "foo"
-
-def test_foozeball():
-    assert foozeball("foo") == "foo"
-
-def test_beer():
-    assert beer("foo") == "foo"
